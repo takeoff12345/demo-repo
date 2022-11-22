@@ -1,3 +1,4 @@
 12345
 echo 重写全部
 main的txt没有改变其内容，只是其他分支改变了txt的内容，这时的merge就不会起冲突
+test has  modified its content of a.txt, over
