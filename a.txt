@@ -3,3 +3,4 @@ echo 重写全部
 main的txt没有改变其内容，只是其他分支改变了txt的内容，这时的merge就不会起冲突
 main has modified,over
 test has  modified its content of a.txt, over
+Hi takeoff12345! You've successfully authenticated, but GitHub does not provide shell access.
