@@ -1,4 +1,34 @@
-<h1>hello</h1>
-<p>there
-<p>I am the owner, and all of branches will merge  with me</p>
-<p>in quick-test, i will be merged to main<p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        比昨天    <span id="jssl1" style="color: red;"></span>
+    </div>
+</body>
+<script>
+
+    function getPercent(num1,num2){  //num1为今天，num2为昨天
+        let Percent = Math.round((num1 - num2) / num2 * 10000)/100.00;
+        console.log(Percent);
+        if(isNaN(num1)||isNaN(num2)){
+            return '-';
+        }else if(Percent > 0){
+            document.getElementById("jssl1").style.color = "green";
+            return `▲ ${Percent}`
+        }else if(Percent < 0){
+            document.getElementById("jssl1").style.color = "red";
+            return `▼ ${Percent}`
+        }
+    }
+
+    let num1 = `${getPercent(120,100)+'%'}`;
+    document.getElementById("jssl1").innerHTML = num1;
+    
+</script>
+</html>
