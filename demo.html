@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="layui-row layui-col-space5">
+        <div id="Ybook" class="layui-col-xs4 layui-col-md4 top-panel-number"></div>
+        <!-- 注意id的取名问题，要具名,Ybook表示yesterday book，昨天借的书 -->
+        <div id="Tbook"class="layui-col-xs4 layui-col-md4 top-panel-number"></div>
+
+        <div class="layui-col-xs1 layui-col-md1"></div> 
+        
+        <div class="layui-col-xs3 layui-col-md3 top-panel-tips">比昨天 <span id="diffYT"></span>
+        <br>
+        比七日 <a style="color: #bd3004">▼0.06</a>
+    </div>
+    <!--  下面测试没问题，就看上面layui了
+        <div class="layui-row layui-col-space5">
+        <div id="Ybook"></div>
+
+        <div id="Tbook"></div>
+
+        <div>比昨天 <span id="diffYT"></span>
+        <br>
+        比七日 <a style="color: #bd3004">▼0.06</a>
+    </div> -->
+</body>
+<script>
+    //num1,num2从后端接口获取
+    function getPercent(num1,num2){  //num1为今天，num2为昨天
+        
+        document.getElementById("Tbook").innerHTML = num1;
+        document.getElementById("Ybook").innerHTML = num2;
+        let Percent = Math.round((num1 - num2) / num2 * 10000)/100.00;
+        console.log(Percent);
+        if(isNaN(num1)||isNaN(num2)){
+            return '-';
+        }else if(Percent > 0){
+            document.getElementById("diffYT").style.color = "green";
+            return `▲ ${Percent}`
+        }else if(Percent < 0){
+            document.getElementById("diffYT").style.color = "red";
+            return `▼ ${Percent}`
+        }
+    }
+
+    let num3 = `${getPercent(100,120)+'%'}`;  //120,100分别对应num1和num2，这两个从后端接口获取
+    document.getElementById("diffYT").innerHTML = num3;
+
+</script>
+</html>
